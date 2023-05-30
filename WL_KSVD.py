@@ -11,7 +11,7 @@ from ksvd import ApproximateKSVD
 from collections import Counter
 
 class WL_KSVD(Estimator):
-    r""" An implementation of Graph KSVD
+    r""" An implementation of WL_KSVD
 
     Args:
         wl_iterations (int): Number of Weisfeiler-Lehman iterations. Default is 2.
