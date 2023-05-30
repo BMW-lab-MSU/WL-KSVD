@@ -19,7 +19,7 @@ clf_list = [ "Nearest Neighbors",
         "Naive Bayes",
         "QDA"]
 
-G_emb_list = ["G2V", "GL2V", "SF", "GKSVD"]
+G_emb_list = ["G2V", "GL2V", "SF", "WL_KSVD"]
 ndims_list = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 
 ndims_list = [128]

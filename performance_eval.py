@@ -19,7 +19,7 @@ clf_list = [ "Nearest Neighbors",
         "Naive Bayes",
         "QDA"]
 
-G_emb_list = ["G2V", "GL2V", "SF", "GKSVD"]
+G_emb_list = ["G2V", "GL2V", "SF", "WL_KSVD"]
 ndims_list = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 
 KFolds = 5
@@ -32,9 +32,6 @@ for ds_name in datasets:
 
     score_test = pickle.load(open(score_path + 'score_test_' + ds_name + '.pkl', 'rb'))
     score_val = pickle.load(open(score_path + 'score_val_' + ds_name + '.pkl', 'rb'))
-
-
-
 
     for emb_name in G_emb_list:
         acc[emb_name] ={}
@@ -49,9 +46,6 @@ for ds_name in datasets:
             acc[emb_name][clf_name]['results'] =acc_val_fold
             acc[emb_name][clf_name]['mean'] = acc_val_fold.mean(axis = 0)
             acc[emb_name][clf_name]['std'] = acc_val_fold.std(axis=0)
-
-
-
 
     acc_mean = {}
     acc_std = {}
@@ -84,8 +78,3 @@ for ds_name in datasets:
         acc_std_val_file = open(score_path + "acc_std_val_" + ds_name + ".pkl", "wb")
         pickle.dump(acc_mean, acc_std_val_file)
         acc_std_val_file.close()
-
-
-
-
-

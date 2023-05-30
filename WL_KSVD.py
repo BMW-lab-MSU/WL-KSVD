@@ -10,7 +10,7 @@ from ksvd import ApproximateKSVD
 
 from collections import Counter
 
-class GraphKSVD(Estimator):
+class WL_KSVD(Estimator):
     r""" An implementation of Graph KSVD
 
     Args:
@@ -125,7 +125,7 @@ class GraphKSVD(Estimator):
 
     def fit(self, graphs: List[nx.classes.graph.Graph]):
         """
-        Fitting a GraphKSVD model.
+        Fitting a WL_KSVD model.
         Arg types:
             * **graphs** *(List of NetworkX graphs)* - The graphs to be embedded.
         """
@@ -168,8 +168,8 @@ class GraphKSVD(Estimator):
 
         documents = self.createWLhash(graphs)
 
-        X = self.calc_coefficients(documents, self._vocab)
+        x = self.calc_coefficients(documents, self._vocab)
 
-        embedding = self.aksvd.transform(X)
+        embedding = self.aksvd.transform(x)
 
         return embedding

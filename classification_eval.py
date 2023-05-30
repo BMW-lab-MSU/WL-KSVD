@@ -5,7 +5,7 @@ import matplotlib.pyplot as plt
 from matplotlib.colors import ListedColormap
 from karateclub.graph_embedding import Graph2Vec, GL2Vec, SF, IGE
 
-from graph_KSVD import GraphKSVD
+from WL_KSVD import WL_KSVD
 
 from pathlib import Path
 
@@ -164,7 +164,7 @@ if __name__ == "__main__":
     save_clf = True
 
 
-    G_emb_list = ["G2V", "GL2V", "SF", "GKSVD"]
+    G_emb_list = ["G2V", "GL2V", "SF", "WL_KSVD"]
     ndims_list = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
 
     clf_names = [
