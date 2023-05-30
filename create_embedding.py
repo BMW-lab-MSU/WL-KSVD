@@ -52,12 +52,12 @@ if __name__ == "__main__":
     # ds_list = [  "NCI109", "PTC_MR", "PROTEINS"]
     ds_list = ["ENZYMES"]
 
-    # G_emb_list = ["G2V", "GL2V", "SF", "WL_KSVD"]
-    G_emb_list = ["GL2V"]
+    G_emb_list = ["G2V", "GL2V", "SF", "WL_KSVD"]
+    # G_emb_list = ["GL2V"]
     # G_emb_list = ["WL_KSVD"]
 
     # ndims_list = [2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 2048]
-    ndims_list = [2]
+    ndims_list = [2, 4]
 
     # number of K-Folds
     K_folds = 2

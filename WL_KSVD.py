@@ -25,18 +25,19 @@ class WL_KSVD(Estimator):
         seed (int): Random seed for the model. Default is 42.
         erase_base_features (bool): Erasing the base features. Default is False.
 
-        n_vocab: Number of preliminary vocabulary size.  Default is None
-        n_atoms: Number of dictionary elements (atoms). Default is None
+        n_vocab: Number of preliminary vocabulary size.  Default is 1000
+        n_atoms: Number of dictionary elements (atoms). Default is 128
+        n_nonzero_coefs: Number of nonzero coefficients to target. Default is 10
         max_iter: Maximum number of iterations. Default is 10
         tol: Tolerance for error. Default is 1e-6
-        n_nonzero_coefs: Number of nonzero coefficients to target. Default is None
+
     """
 
     def __init__(
         self,
         wl_iterations: int = 2,
         attributed: bool = False,
-        dimensions = 128,
+        dimensions: int = 128,
         workers: int = 4,
         down_sampling: float = 0.0001,
         epochs: int = 10,
@@ -46,9 +47,10 @@ class WL_KSVD(Estimator):
         erase_base_features: bool = False,
         n_vocab: int = 1000,
         n_atoms: int = 128,
+        n_non_zero_coefs: int = 10,
         max_iter: int = 10,
-        tol = 1e-6,
-        n_non_zero_coefs: int = 10
+        tol: float = 1e-6
+
     ):
         self.wl_iterations = wl_iterations
         self.attributed = attributed
@@ -62,20 +64,20 @@ class WL_KSVD(Estimator):
         self.erase_base_features = erase_base_features
         self.n_vocab = n_vocab
         self.n_atoms = n_atoms
+        self.n_non_zero_coefs = n_non_zero_coefs
         self.max_iter = max_iter
         self.tol = tol
-        self.n_non_zero_coefs = n_non_zero_coefs
+
 
     def createWLhash(self, graph_list):
 
         documents = []
         # TODO: parallel implementation
         for graph in graph_list:
-            G = graph
-            G = self._check_graph(G)
+            g = self._check_graph(graph)
 
             document = WeisfeilerLehmanHashing(
-                G, self.wl_iterations, self.attributed, self.erase_base_features)
+                g, self.wl_iterations, self.attributed, self.erase_base_features)
 
             documents.append(document)
 
@@ -87,7 +89,7 @@ class WL_KSVD(Estimator):
         return documents
 
     def create_vocab(self, corpus):
-        d2v_model = Doc2Vec(vector_size = self.n_vocab, min_count= self.min_count, epochs= self.epochs)
+        d2v_model = Doc2Vec(vector_size=self.n_vocab, min_count=self.min_count, epochs=self.epochs)
 
         # d2v_model.build_vocab(train_corpus)
         total_words, corpus_count = d2v_model.scan_vocab(
@@ -136,14 +138,13 @@ class WL_KSVD(Estimator):
 
         self._vocab = self.create_vocab(documents)
 
-        X = self.calc_coefficients(documents, self._vocab)
+        x = self.calc_coefficients(documents, self._vocab)
 
-        aksvd = ApproximateKSVD( n_components = self.dimensions, max_iter= self.max_iter, tol= self.tol,
+        aksvd = ApproximateKSVD(n_components=self.dimensions, max_iter=self.max_iter, tol=self.tol,
                  transform_n_nonzero_coefs=self.n_non_zero_coefs)
-        self._dictionary = aksvd.fit(X).components_
+        self._dictionary = aksvd.fit(x).components_
 
-
-        self._embedding = aksvd.transform(X)
+        self._embedding = aksvd.transform(x)
 
         self.aksvd = aksvd
 
