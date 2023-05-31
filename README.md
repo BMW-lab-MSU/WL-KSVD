@@ -1,8 +1,12 @@
-# WL-KSVD
+# Dictionary Learning on Graph Data with Weisfeiler-Lehman Sub-Tree Kernel and KSVD
+
 
 !!!!! Under construction !!!!!!!!
 
 Whole graph embedding method using WL sub-tree kernel and KSVD sparse representation. This method is based on the Graph2Vec method implemented by KarateClub package.
+
+![WL_KSVD_overview](./assets/images/WL_KSVD_overview.png "Overview of WL+KSVD method")
+
 
 # WL+KSVD
 An implementation of “WL+KSVD” from the ICASSP 2023 paper “Dictionary Learning on Graph Data with Weisfieler-Lehman
@@ -59,6 +63,7 @@ Return types:
 - embedding (Numpy array) - The embedding of graphs.
 
 # Requirements
+It is recommended to create a virtual python environment.
 
     pip install -r requirements.txt
 
@@ -75,7 +80,7 @@ Return types:
 # Usage
 A simple example of the application of WL+KSVD method is shown.
 
-    example.py
+    python example.py
 
 # Experiments
 Compare the Performance of Wl+KSVD method to several Graphs embedding methods. The Graphs are first converted to an 
@@ -103,5 +108,32 @@ Licensed under the BSD-3Clause license
 
 # Citation
 
-    K. Liyanage, R. Pearsall, C. Izurieta and B. M. Whitaker, "Dictionary Learning on Graph Data with Weisfieler-Lehman Sub-Tree Kernel and Ksvd," ICASSP 2023 - 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Rhodes Island, Greece, 2023, pp. 1-5, doi: 10.1109/ICASSP49357.2023.10094980.
+- K. Liyanage, R. Pearsall, C. Izurieta and B. M. Whitaker, "Dictionary Learning on Graph Data with Weisfieler-Lehman Sub-Tree Kernel and Ksvd," ICASSP 2023 - 2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), Rhodes Island, Greece, 2023, pp. 1-5, doi: 10.1109/ICASSP49357.2023.10094980.
+
+
+    @inproceedings{liyanage2023dictionary,
+      title={Dictionary Learning on Graph Data with Weisfieler-Lehman Sub-Tree Kernel and Ksvd},
+      author={Liyanage, Kaveen and Pearsall, Reese and Izurieta, Clemente and Whitaker, Bradley M},
+      booktitle={ICASSP 2023-2023 IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP)},
+      pages={1--5},
+      year={2023},
+      organization={IEEE}
+    }
+
+# Reference
+Graph2Vec
+- A. Narayanan, M. Chandramohan, R. Venkatesan, L. Chen, Y. Liu and S. Jaiswal, "graph2vec: Learning distributed representations of graphs", 13th International Workshop on Mining and Learning with Graphs (ML-GWorkshop 2017), 2017.
+
+WL kernel
+- N. Shervashidze, P. Schweitzer, E. J. Van Leeuwen, K. Mehlhorn and K. M. Borgwardt, "Weisfeiler-lehman graph kernels", Journal of Machine Learning Research, vol. 12, no. 9, 2011.
+
+Doc2Vec
+- Q. Le and T. Mikolov, "Distributed representations of sentences and documents", Proceedings of the 31st International Conference on Machine Learning (E. P. Xing and T. Jebara eds.) vol. 32 of Proceedings of Machine Learning Research, pp. 1188-1196, 22–24 Jun 2014.
+
+KSVD
+- M. Aharon, M. Elad and A. Bruckstein, "K-SVD: An algorithm for designing overcomplete dictionaries for sparse representation", IEEE Transactions on Signal Processing, vol. 54, pp. 4311-4322, Nov. 2006.
+
+# Additional reading
+- R. Matsuo, R. Nakamura and H. Ohsaki, "Sparse representation of network topology with k-SVD algorithm", 2019 IEEE 43rd Annual Computer Software and Applications Conference (COMPSAC), jul 2019.
+- H. Cai, V. W. Zheng and K. C.-C. Chang, "A comprehensive survey of graph embedding: Problems techniques and applications", IEEE Transactions on Knowledge and Data Engineering, vol. 30, pp. 1616-1637, sep 2018.
 
