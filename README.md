@@ -1,7 +1,7 @@
 # Dictionary Learning on Graph Data with Weisfeiler-Lehman Sub-Tree Kernel and KSVD
 
 
-!!!!! Under construction !!!!!!!!
+!!!!! This repository is under improvements.!!!!!!!!
 
 Whole graph embedding method using WL sub-tree kernel and KSVD sparse representation. This method is based on the Graph2Vec method implemented by KarateClub package.
 
@@ -62,7 +62,7 @@ Arg types:
 Return types:
 - embedding (Numpy array) - The embedding of graphs.
 
-# Requirements
+## Requirements
 It is recommended to create a virtual python environment.
 
     pip install -r requirements.txt
@@ -77,7 +77,7 @@ It is recommended to create a virtual python environment.
 - pandas==1.3.5
 - scikit_learn==1.0.2
 
-# Usage
+## Usage
 A simple example of the application of WL+KSVD method is shown.
 
     python example.py
@@ -137,3 +137,5 @@ KSVD
 - R. Matsuo, R. Nakamura and H. Ohsaki, "Sparse representation of network topology with k-SVD algorithm", 2019 IEEE 43rd Annual Computer Software and Applications Conference (COMPSAC), jul 2019.
 - H. Cai, V. W. Zheng and K. C.-C. Chang, "A comprehensive survey of graph embedding: Problems techniques and applications", IEEE Transactions on Knowledge and Data Engineering, vol. 30, pp. 1616-1637, sep 2018.
 
+# Funding
+This research was conducted with the U.S. Department of Homeland Security (DHS) Science and Technology Directorate (S&T) under contract 70RSAT22CB0000005. Any opinions contained herein are those of the authors and do not necessarily reflect those of DHS S&T.
