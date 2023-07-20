@@ -27,7 +27,7 @@ class WL_KSVD(Estimator):
 
         n_vocab: Number of preliminary vocabulary size.  Default is 1000
         n_atoms: Number of dictionary elements (atoms). Default is 128
-        n_nonzero_coefs: Number of nonzero coefficients to target. Default is 10
+        n_non_zero_coefs: Number of nonzero coefficients to target. Default is 10
         max_iter: Maximum number of iterations. Default is 10
         tol: Tolerance for error. Default is 1e-6
 
